@@ -28,14 +28,8 @@ public class C206_CaseStudy {
 					viewBuyerAcct(buyerList);
 				} else if (option1 == 2) {
 					addBuyer(buyerList, null);
-//				} else if (option1 == 3) {
-//					
-//					if (deleted == true) {
-//						System.out.println(String.format("Phone number %s was deleted", phone));
-//					} else {
-//						System.out.println("Something went wrong,Account with phone number " + phone + "no deleted");
-//					}
-//				}
+				} else if (option1 == 3) {
+					deleteBuyer(buyerList);
 				}else 
 					System.out.println("Thank You!");
 				}
@@ -99,7 +93,7 @@ public class C206_CaseStudy {
 	String name = Helper.readString("Enter Full Name > ");
 	String phone = Helper.readString("Enter Contact Number > ");
 	String email = Helper.readString("Enter Email Address > ");
-	String address = Helper.readString("Enter Home Address > ");
+	String address = Helper.readString("Enter Home Address(ZipCode, Unit No.) > ");
 	
 	Buyer buyerInfo = new Buyer(name,phone,email,address);
 	buyerList.add(buyerInfo);
@@ -107,7 +101,7 @@ public class C206_CaseStudy {
 	
 	}
 	//Mahirah - Delete Buyer Account
-	public static void deleteBuyer(ArrayList <Buyer> buyerList, String phone) {
+	public static void deleteBuyer(ArrayList <Buyer> buyerList) {
 		String phone1 = Helper.readString("Enter contact number > ");
 		
 		for (Buyer i : buyerList) {
@@ -121,6 +115,7 @@ public class C206_CaseStudy {
 				}
 			}
 	
+	//Mahirah - Retrieve Buyer account
 	public static String retrieveAllBuyer(ArrayList<Buyer> buyerList) {
 		String output = "";
 		
