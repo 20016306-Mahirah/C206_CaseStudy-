@@ -11,6 +11,13 @@ public class C206_CaseStudy {
 		buyerList.add(new Buyer("Mahirah", "90105231", "mahirahS@gmail.com", "64521, #02-1078"));
 		buyerList.add(new Buyer("Melissa", "80015002", "MelissaT@hotmail.com", "760030, #09-103"));
 		
+		ArrayList<Item> itemList = new ArrayList<Item>();
+		itemList.add(new Item(1,"ItemName","ItemDesc","price",true));
+		itemList.add(new Item(2,"ItemName2","ItemDesc2","price2",true));
+		
+		ArrayList<Item> orderedList = new ArrayList<Item>();
+		
+		
 		int option = 0;
 		
 		while (option != 6) {
@@ -124,5 +131,29 @@ public class C206_CaseStudy {
 		}
 		return output;
 		}
+	
+	
+	//Raiyan - Make Order
+		public static void makeOrder(ArrayList<Item>itemList) {
+			String order = "";
+			
+			String OrderItem = Helper.readString("Item to be bought > ");
+			
+		for (int i = 0 ; i < itemList.size(); i++) {
+			if (itemList.get(i).getItemname().equalsIgnoreCase(OrderItem)) {
+				order += itemList.get(i).getItemname();
+				order += "\n" + itemList.get(i).getDescription();
+				order += "\n" + itemList.get(i).getPrice();
+				
+				Item ItemOrdered = itemList.get(i);
+			} else {
+				System.out.println("Item does not exist in our system");
+			}
+			System.out.println(order);
+		}
+		
 	}
+}
+
+	
 
