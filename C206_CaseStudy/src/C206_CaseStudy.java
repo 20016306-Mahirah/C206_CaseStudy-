@@ -181,7 +181,7 @@ public class C206_CaseStudy {
 
     }
 
-    // Junjie - check with Mahirah
+    // Junjie 
     public static Buyer searchBuyer(ArrayList<Buyer> buyerList, String mobileNumber) {
         for(Buyer buyer: buyerList) {
             if (buyer.getPhone().equals(mobileNumber)) {

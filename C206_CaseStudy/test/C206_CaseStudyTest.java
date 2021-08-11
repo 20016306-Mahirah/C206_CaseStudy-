@@ -163,5 +163,20 @@ public void testDeleteNonExistingAppointment() {
     C206_CaseStudy.cancelAppointment(appointmentList, "80015002", "2021-07-28", "09:15");
     Assert.assertEquals(2, appointmentList.size());
 }
+/*
+View all existing appointments - OK
+*/
+@Test
+public void testDViewAllExistingAppointments() {
+// initialize test data
+Buyer buyer1 = new Buyer("Mahirah", "90105231", "mahirahS@gmail.com", "64521, #02-1078");
+Buyer buyer2 = new Buyer("Melissa", "80015002", "MelissaT@hotmail.com", "760030, #09-103");
+ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+appointmentList.add(new Appointment(buyer1, "2021-07-31", "11:15"));
+appointmentList.add(new Appointment(buyer2, "2021-07-29", "09:15"));
+C206_CaseStudy.viewAllAppointments(appointmentList);
+}
 
 }
+
+
