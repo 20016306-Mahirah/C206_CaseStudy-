@@ -1,8 +1,10 @@
 import static org.junit.Assert.*;
 
+
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -74,7 +76,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Camcorder arraylist size is 2?", 2, buyerList.size());
 
 	}
-	
+	//jun jie 
 	@Test
 	public void testDeleteBuyer() {
 		//boundary
@@ -91,5 +93,75 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Buyer arraylist can't be cleared if it is empty", 0 , buyerList.size());
 		buyerList.clear();
 	}
+    /*
+    Add new appointment - OK
+ */
+	//jun jie
+@Test
+public void testAddNewAppointment() {
+    // initialize test data
+    ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
+    ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+    buyerList.add(new Buyer("junjie", "90105231", "junjie@gmail.com", "64521, #02-1078"));
+    buyerList.add(new Buyer("george", "80015002", "george@hotmail.com", "760030, #09-103"));
+
+    Assert.assertEquals(0, appointmentList.size());
+
+    C206_CaseStudy.addAppointment(appointmentList, buyerList, "90105231", "2021-08-10", "10:30");
+    C206_CaseStudy.addAppointment(appointmentList, buyerList, "80015002", "2021-10-10", "10:30");
+
+    Assert.assertEquals(2, appointmentList.size());
+}
+
+/*
+    Add new appointment when buyer not exists- OK
+ */
+//jun jie
+@Test
+public void testFailToAddAppointment() {
+    // initialize test data
+    ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
+    ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+    Assert.assertTrue(appointmentList.size() == 0);
+    C206_CaseStudy.addAppointment(appointmentList, buyerList, "90105231", "2021-08-10", "10:30");
+    C206_CaseStudy.addAppointment(appointmentList, buyerList, "80015002", "2021-10-10", "10:30");
+    Assert.assertEquals(0, appointmentList.size());
+}
+
+/*
+    Delete existing appointment - OK
+ */
+//jun jie
+@Test
+public void testDeleteExistingAppointment() {
+    // initialize test data
+    Buyer buyer1 = new Buyer("jun jie", "90105231", "junjie@gmail.com", "64521, #02-1078");
+    Buyer buyer2 = new Buyer("george", "80015002", "george@hotmail.com", "760030, #09-103");
+    ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+    appointmentList.add(new Appointment(buyer1, "2021-07-31", "11:15"));
+    appointmentList.add(new Appointment(buyer2, "2021-07-29", "09:15"));
+    Assert.assertEquals(2, appointmentList.size());
+    C206_CaseStudy.cancelAppointment(appointmentList, "80015002", "2021-07-29", "09:15");
+    Assert.assertEquals(1, appointmentList.size());
+}
+
+/*
+    Delete non-existing appointment - OK
+ */
+// jun jie 
+@Test
+public void testDeleteNonExistingAppointment() {
+    // initialize test data
+    Buyer buyer1 = new Buyer("jun jie", "90105231", "junjie@gmail.com", "64521, #02-1078");
+    Buyer buyer2 = new Buyer("george", "80015002", "george@hotmail.com", "760030, #09-103");
+    ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+    appointmentList.add(new Appointment(buyer1, "2021-07-31", "11:15"));
+    appointmentList.add(new Appointment(buyer2, "2021-07-29", "09:15"));
+    Assert.assertEquals(2, appointmentList.size());
+    C206_CaseStudy.cancelAppointment(appointmentList, "80015002", "2021-07-30", "09:15");
+    Assert.assertEquals(2, appointmentList.size());
+    C206_CaseStudy.cancelAppointment(appointmentList, "80015002", "2021-07-28", "09:15");
+    Assert.assertEquals(2, appointmentList.size());
+}
 
 }
